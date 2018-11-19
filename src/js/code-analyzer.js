@@ -8,7 +8,6 @@ const parseCode = (codeToParse) => {
 };
 
 export function getHTML(parsedCode) {
-    console.log(JSON.stringify(parsedCode));
     let res = getElem(parsedCode);
     let toArray = treeTo2DArray(res);
     return makeTableHTML(toArray);
