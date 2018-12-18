@@ -168,6 +168,14 @@ describe('The javascript parser', () => {
         );
     });
 
+
+    it('test block statement', () => {
+        assert.deepEqual(
+            getElem({"type":"Program","body":[{"type":"FunctionDeclaration","id":{"type":"Identifier","name":"foo","loc":{"start":{"line":1,"column":9},"end":{"line":1,"column":12}}},"params":[{"type":"Identifier","name":"x","loc":{"start":{"line":1,"column":13},"end":{"line":1,"column":14}}}],"body":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"BinaryExpression","operator":"<","left":{"type":"Identifier","name":"x","loc":{"start":{"line":2,"column":3},"end":{"line":2,"column":4}}},"right":{"type":"Literal","value":3,"raw":"3","loc":{"start":{"line":2,"column":7},"end":{"line":2,"column":8}}},"loc":{"start":{"line":2,"column":3},"end":{"line":2,"column":8}}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"UpdateExpression","operator":"++","argument":{"type":"Identifier","name":"x","loc":{"start":{"line":3,"column":0},"end":{"line":3,"column":1}}},"prefix":false,"loc":{"start":{"line":3,"column":0},"end":{"line":3,"column":3}}},"loc":{"start":{"line":3,"column":0},"end":{"line":3,"column":4}}},{"type":"ExpressionStatement","expression":{"type":"UpdateExpression","operator":"++","argument":{"type":"Identifier","name":"x","loc":{"start":{"line":4,"column":0},"end":{"line":4,"column":1}}},"prefix":false,"loc":{"start":{"line":4,"column":0},"end":{"line":4,"column":3}}},"loc":{"start":{"line":4,"column":0},"end":{"line":4,"column":4}}}],"loc":{"start":{"line":2,"column":9},"end":{"line":5,"column":1}}},"alternate":null,"loc":{"start":{"line":2,"column":0},"end":{"line":5,"column":1}}},{"type":"ReturnStatement","argument":{"type":"Identifier","name":"x","loc":{"start":{"line":6,"column":7},"end":{"line":6,"column":8}}},"loc":{"start":{"line":6,"column":0},"end":{"line":6,"column":9}}}],"loc":{"start":{"line":1,"column":15},"end":{"line":7,"column":1}}},"generator":false,"expression":false,"async":false,"loc":{"start":{"line":1,"column":0},"end":{"line":7,"column":1}}}],"sourceType":"script","loc":{"start":{"line":1,"column":0},"end":{"line":7,"column":1}}})
+                [{"line":1,"type":"FunctionDeclaration","name":"foo","condition":null,"value":null},{"line":1,"type":"VariableDeclaration","name":"x","condition":null,"value":null},{"line":2,"type":"IfStatement","name":null,"condition":"x < 3","value":null},{"line":6,"type":"ReturnStatement","name":null,"condition":null,"value":"x"}]
+             );
+    });
+
     it('test if function', ()=>{
 
         assert.deepEqual(

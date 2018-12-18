@@ -120,11 +120,16 @@ export function getElem(parsedCode) {
     parsedCode.body.forEach((item) => {
         result = concatElem(result,item);
         result = pushElem(result,item);
+        if(item.type === 'BlockStatement')
+            result = result.concat(getBlockExp(item));
     });
     return result;
 }
 
 
+function getBlockExp(item){
+    return getElem(item);
+}
 
 function getForExp(item){
     let res = [];
@@ -184,7 +189,7 @@ function getWhileExp(item) {
 function getAssExp(item) {
     let exp = item.expression;
     let type = exp.type;
-    let name = exp.left.name;
+    let name = escodegen.generate(exp.left);
     let value = escodegen.generate(exp.right);
     let condition = null;
     let line = item.loc.start.line;
